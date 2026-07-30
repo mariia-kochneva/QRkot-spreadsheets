@@ -16,7 +16,9 @@ class YandexDiskClient:
 
     async def __aenter__(self):
         self._client = httpx.AsyncClient(timeout=30.0)
-        self._headers = {'Authorization': f'OAuth {self.token}'} if self.token else {}
+        self._headers = {
+            'Authorization': f'OAuth {self.token}'
+        } if self.token else {}
         return self
 
     async def __aexit__(self, exc_type, exc_val, exc_tb):
